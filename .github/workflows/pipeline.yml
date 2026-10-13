@@ -48,7 +48,7 @@ jobs:
       - name: Build the deployable zip
         run: |
           pip install -r requirements.txt -t build/
-          cp app.py duckfine.py lambda_function.py build/
+          cp app.py lambda_function.py build/
           cd build && zip -qr ../quackloan.zip .
       - name: Generate an SBOM
         uses: anchore/sbom-action@v0
