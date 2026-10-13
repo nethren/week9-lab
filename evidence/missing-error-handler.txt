@@ -1,0 +1,61 @@
+test_deluxe_flag_reaches_the_fee_calculation (test_app.TestFineEndpoint.test_deluxe_flag_reaches_the_fee_calculation) ... ok
+test_fine_is_returned_as_json (test_app.TestFineEndpoint.test_fine_is_returned_as_json) ... ok
+test_health_is_ok (test_app.TestFineEndpoint.test_health_is_ok) ... ok
+test_missing_days_is_a_400_with_an_error (test_app.TestFineEndpoint.test_missing_days_is_a_400_with_an_error) ... ok
+test_negative_days_is_a_400_not_a_crash (test_app.TestFineEndpoint.test_negative_days_is_a_400_not_a_crash) ... ERROR
+test_non_numeric_days_is_a_400_not_a_crash (test_app.TestFineEndpoint.test_non_numeric_days_is_a_400_not_a_crash) ... ok
+test_accounts_have_independent_totals (test_duckfine.TestDuckFine.test_accounts_have_independent_totals) ... ok
+test_deluxe_doubles_the_fee (test_duckfine.TestDuckFine.test_deluxe_doubles_the_fee) ... ok
+test_deluxe_fine_is_capped_after_doubling (test_duckfine.TestDuckFine.test_deluxe_fine_is_capped_after_doubling) ... ok
+test_fines_accumulate_for_the_member (test_duckfine.TestDuckFine.test_fines_accumulate_for_the_member) ... ok
+test_first_chargeable_day_costs_fifty_cents (test_duckfine.TestDuckFine.test_first_chargeable_day_costs_fifty_cents) ... ok
+test_first_two_days_are_free (test_duckfine.TestDuckFine.test_first_two_days_are_free) ... ok
+test_five_days_late_costs_one_fifty (test_duckfine.TestDuckFine.test_five_days_late_costs_one_fifty) ... ok
+test_negative_days_rejected_without_changing_total (test_duckfine.TestDuckFine.test_negative_days_rejected_without_changing_total) ... ok
+test_standard_fine_is_capped_at_five_dollars (test_duckfine.TestDuckFine.test_standard_fine_is_capped_at_five_dollars) ... ok
+
+======================================================================
+ERROR: test_negative_days_is_a_400_not_a_crash (test_app.TestFineEndpoint.test_negative_days_is_a_400_not_a_crash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/test_app.py", line 35, in test_negative_days_is_a_400_not_a_crash
+    resp = self.client.get("/fine?days=-1")
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/werkzeug/test.py", line 1166, in get
+    return self.open(*args, **kw)
+           ~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/testing.py", line 235, in open
+    response = super().open(
+        request,
+        buffered=buffered,
+        follow_redirects=follow_redirects,
+    )
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/werkzeug/test.py", line 1120, in open
+    response_parts = self.run_wsgi_app(request.environ, buffered=buffered)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/werkzeug/test.py", line 992, in run_wsgi_app
+    rv = run_wsgi_app(self.application, environ, buffered=buffered)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/werkzeug/test.py", line 1268, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/.venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/app.py", line 19, in fine
+    fee = DuckFine("quote").charge(days, deluxe=deluxe)
+  File "/Users/Mac/Documents/Codex/Projects/SPM/outputs/week9-lab/duckfine.py", line 13, in charge
+    raise ValueError("days_late must not be negative")
+ValueError: days_late must not be negative
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.017s
+
+FAILED (errors=1)

@@ -1,0 +1,96 @@
+name: pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install ruff
+      - run: ruff check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -v
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install pip-audit
+      - run: pip-audit -r requirements.txt
+
+  package:
+    needs: [ lint, test, audit ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Build the deployable zip
+        run: |
+          pip install -r requirements.txt -t build/
+          cp app.py duckfine.py lambda_function.py build/
+          cd build && zip -qr ../quackloan.zip .
+      - name: Generate an SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: build/
+          format: spdx-json
+          artifact-name: sbom.spdx.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quackloan-deployment-package
+          path: quackloan.zip
+
+  smoke:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/download-artifact@v4
+        with:
+          name: quackloan-deployment-package
+      - name: Run the artifact (not the source) and smoke-test it
+        run: |
+          unzip -q quackloan.zip -d staged
+          cd staged
+          python -m flask --app app run > ../app.log 2>&1 &
+          cd ..
+          bash smoke.sh http://localhost:5000 || { cat app.log; exit 1; }
+
+  staging:
+    needs: smoke
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - run: echo "Deploy to staging goes here (Part 4)"
+
+  production:
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "Deploy to production goes here (Part 4)"

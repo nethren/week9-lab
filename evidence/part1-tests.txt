@@ -1,0 +1,20 @@
+test_deluxe_flag_reaches_the_fee_calculation (test_app.TestFineEndpoint.test_deluxe_flag_reaches_the_fee_calculation) ... ok
+test_fine_is_returned_as_json (test_app.TestFineEndpoint.test_fine_is_returned_as_json) ... ok
+test_health_is_ok (test_app.TestFineEndpoint.test_health_is_ok) ... ok
+test_missing_days_is_a_400_with_an_error (test_app.TestFineEndpoint.test_missing_days_is_a_400_with_an_error) ... ok
+test_negative_days_is_a_400_not_a_crash (test_app.TestFineEndpoint.test_negative_days_is_a_400_not_a_crash) ... ok
+test_non_numeric_days_is_a_400_not_a_crash (test_app.TestFineEndpoint.test_non_numeric_days_is_a_400_not_a_crash) ... ok
+test_accounts_have_independent_totals (test_duckfine.TestDuckFine.test_accounts_have_independent_totals) ... ok
+test_deluxe_doubles_the_fee (test_duckfine.TestDuckFine.test_deluxe_doubles_the_fee) ... ok
+test_deluxe_fine_is_capped_after_doubling (test_duckfine.TestDuckFine.test_deluxe_fine_is_capped_after_doubling) ... ok
+test_fines_accumulate_for_the_member (test_duckfine.TestDuckFine.test_fines_accumulate_for_the_member) ... ok
+test_first_chargeable_day_costs_fifty_cents (test_duckfine.TestDuckFine.test_first_chargeable_day_costs_fifty_cents) ... ok
+test_first_two_days_are_free (test_duckfine.TestDuckFine.test_first_two_days_are_free) ... ok
+test_five_days_late_costs_one_fifty (test_duckfine.TestDuckFine.test_five_days_late_costs_one_fifty) ... ok
+test_negative_days_rejected_without_changing_total (test_duckfine.TestDuckFine.test_negative_days_rejected_without_changing_total) ... ok
+test_standard_fine_is_capped_at_five_dollars (test_duckfine.TestDuckFine.test_standard_fine_is_capped_at_five_dollars) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.015s
+
+OK
