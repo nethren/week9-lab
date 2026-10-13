@@ -29,7 +29,7 @@ PAGE = """<!doctype html>
 <h1>QuackLoan fine checker</h1>
 <form>
   <label>Days late <input name="days" type="number" min="0"></label>
-  <label><input name="deluxe" type="checkbox" value="1">
+  <label><input name="deluxe" type="checkbox">
     Deluxe duck</label>
   <button>Check fine</button>
 </form>
