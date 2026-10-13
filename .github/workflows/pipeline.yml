@@ -80,8 +80,36 @@ jobs:
           cd ..
           bash smoke.sh http://localhost:5000 || { cat app.log; exit 1; }
 
+  e2e:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/download-artifact@v4
+        with:
+          name: quackloan-deployment-package
+      - name: Install Playwright and its browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run the artifact and test it through a browser
+        run: |
+          unzip -q quackloan.zip -d staged
+          cd staged
+          python -m flask --app app run > ../app.log 2>&1 &
+          cd ..
+          for i in $(seq 1 20); do
+            curl -fs http://localhost:5000/health > /dev/null && break
+            sleep 1
+          done
+          python -m unittest discover -s e2e -v \
+            || { cat app.log; exit 1; }
+
   staging:
-    needs: smoke
+    needs: [ smoke, e2e ]
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     environment: staging
