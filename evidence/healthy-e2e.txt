@@ -1,0 +1,6 @@
+test_member_checks_the_fine_for_a_deluxe_duck (test_fine_checker.TestFineChecker.test_member_checks_the_fine_for_a_deluxe_duck) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.383s
+
+OK

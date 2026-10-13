@@ -1,0 +1,110 @@
+e2e	Run the artifact and test it through a browser	﻿2026-10-13T02:15:30.0260805Z ##[group]Run unzip -q quackloan.zip -d staged
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0261145Z [36;1munzip -q quackloan.zip -d staged[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0261375Z [36;1mcd staged[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0261611Z [36;1mpython -m flask --app app run > ../app.log 2>&1 &[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0261884Z [36;1mcd ..[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0262068Z [36;1mfor i in $(seq 1 20); do[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0262358Z [36;1m  curl -fs http://localhost:5000/health > /dev/null && break[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0262642Z [36;1m  sleep 1[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0262812Z [36;1mdone[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0263017Z [36;1mpython -m unittest discover -s e2e -v \[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0263267Z [36;1m  || { cat app.log; exit 1; }[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0319738Z shell: /usr/bin/bash -e {0}
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0319968Z env:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0320206Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0320569Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0320950Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0321252Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0321551Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0321847Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:30.0322108Z ##[endgroup]
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4429623Z test_member_checks_the_fine_for_a_deluxe_duck (test_fine_checker.TestFineChecker.test_member_checks_the_fine_for_a_deluxe_duck) ... ERROR
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4844777Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4845310Z ======================================================================
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4846277Z ERROR: test_member_checks_the_fine_for_a_deluxe_duck (test_fine_checker.TestFineChecker.test_member_checks_the_fine_for_a_deluxe_duck)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4847288Z ----------------------------------------------------------------------
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4847679Z Traceback (most recent call last):
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4854257Z   File "/home/runner/work/week9-lab/week9-lab/e2e/test_fine_checker.py", line 30, in test_member_checks_the_fine_for_a_deluxe_duck
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4854783Z     page.goto(BASE_URL)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4854989Z     ~~~~~~~~~^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4855462Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 9903, in goto
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4856345Z     self._sync(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4856517Z     ~~~~~~~~~~^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4856692Z         self._impl_obj.goto(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4856890Z         ^^^^^^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4857077Z     ...<4 lines>...
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4857246Z         )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4857399Z         ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4857543Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4857698Z     ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4858106Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4858547Z     return task.result()
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4858740Z            ~~~~~~~~~~~^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4859125Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_page.py", line 562, in goto
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4859607Z     return await self._main_frame.goto(**locals_to_params(locals()))
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4859909Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4860345Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 157, in goto
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4860770Z     await self._channel.send(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4861049Z         "goto", self._navigation_timeout, locals_to_params(locals())
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4861305Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4861687Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 76, in send
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4862153Z     return await self._connection.wrap_api_call(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4862395Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4862850Z     ...<3 lines>...
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4863022Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4863165Z     ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4863606Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4864173Z     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4864737Z playwright._impl._errors.Error: Page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:5000/
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4865086Z Call log:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4865309Z   - navigating to "http://localhost:5000/", waiting until "load"
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4865800Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4865807Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4865942Z ----------------------------------------------------------------------
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4866217Z Ran 1 test in 0.504s
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4866323Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.4866400Z FAILED (errors=1)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5063501Z Usage: python -m flask run [OPTIONS]
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5063949Z Try 'python -m flask run --help' for help.
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5064205Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5064393Z Error: While importing 'app', an ImportError was raised:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5064721Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5064861Z Traceback (most recent call last):
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5065656Z   File "/home/runner/work/week9-lab/week9-lab/staged/flask/cli.py", line 245, in locate_app
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5066246Z     __import__(module_name)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5066560Z     ~~~~~~~~~~^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5067059Z   File "/home/runner/work/week9-lab/week9-lab/staged/app.py", line 3, in <module>
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5067588Z     from duckfine import DuckFine
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5067954Z ModuleNotFoundError: No module named 'duckfine'
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5068469Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:15:51.5077379Z ##[error]Process completed with exit code 1.
+smoke	Run the artifact (not the source) and smoke-test it	﻿2026-10-13T02:15:01.8711218Z ##[group]Run unzip -q quackloan.zip -d staged
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.8713831Z [36;1munzip -q quackloan.zip -d staged[0m
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.8715435Z [36;1mcd staged[0m
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.8717362Z [36;1mpython -m flask --app app run > ../app.log 2>&1 &[0m
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.8719096Z [36;1mcd ..[0m
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.8720781Z [36;1mbash smoke.sh http://localhost:5000 || { cat app.log; exit 1; }[0m
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9337847Z shell: /usr/bin/bash -e {0}
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9339376Z env:
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9340767Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9343007Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9345136Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9347889Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9349898Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9351972Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:01.9353911Z ##[endgroup]
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1812865Z No answer from http://localhost:5000/health
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1822441Z Usage: python -m flask run [OPTIONS]
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1823219Z Try 'python -m flask run --help' for help.
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1823644Z 
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1824033Z Error: While importing 'app', an ImportError was raised:
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1824475Z 
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1824860Z Traceback (most recent call last):
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1830961Z   File "/home/runner/work/week9-lab/week9-lab/staged/flask/cli.py", line 245, in locate_app
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1831746Z     __import__(module_name)
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1832182Z     ~~~~~~~~~~^^^^^^^^^^^^^
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1832779Z   File "/home/runner/work/week9-lab/week9-lab/staged/app.py", line 3, in <module>
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1833537Z     from duckfine import DuckFine
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1834045Z ModuleNotFoundError: No module named 'duckfine'
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1834372Z 
+smoke	Run the artifact (not the source) and smoke-test it	2026-10-13T02:15:21.1847508Z ##[error]Process completed with exit code 1.

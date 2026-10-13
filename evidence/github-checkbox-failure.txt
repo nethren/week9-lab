@@ -1,0 +1,82 @@
+e2e	Run the artifact and test it through a browser	﻿2026-10-13T02:14:49.9176141Z ##[group]Run unzip -q quackloan.zip -d staged
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9176573Z [36;1munzip -q quackloan.zip -d staged[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9176860Z [36;1mcd staged[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9177146Z [36;1mpython -m flask --app app run > ../app.log 2>&1 &[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9177489Z [36;1mcd ..[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9177709Z [36;1mfor i in $(seq 1 20); do[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9178079Z [36;1m  curl -fs http://localhost:5000/health > /dev/null && break[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9178446Z [36;1m  sleep 1[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9178654Z [36;1mdone[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9178898Z [36;1mpython -m unittest discover -s e2e -v \[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9179218Z [36;1m  || { cat app.log; exit 1; }[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9243898Z shell: /usr/bin/bash -e {0}
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9244182Z env:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9244471Z   pythonLocation: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9244942Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib/pkgconfig
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9245438Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9245826Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9246218Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.13.16/x64
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9246612Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.13.16/x64/lib
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:49.9246943Z ##[endgroup]
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3132129Z test_member_checks_the_fine_for_a_deluxe_duck (test_fine_checker.TestFineChecker.test_member_checks_the_fine_for_a_deluxe_duck) ... FAIL
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3660072Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3660634Z ======================================================================
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3661782Z FAIL: test_member_checks_the_fine_for_a_deluxe_duck (test_fine_checker.TestFineChecker.test_member_checks_the_fine_for_a_deluxe_duck)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3663324Z ----------------------------------------------------------------------
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3663743Z Traceback (most recent call last):
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3671094Z   File "/home/runner/work/week9-lab/week9-lab/e2e/test_fine_checker.py", line 35, in test_member_checks_the_fine_for_a_deluxe_duck
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3671873Z     expect(result).to_have_text("Your fine is $3.00")
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3672246Z     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3672999Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 23008, in to_have_text
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3673656Z     self._sync(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3673872Z     ~~~~~~~~~~^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3674097Z         self._impl_obj.to_have_text(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3674386Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3674645Z     ...<4 lines>...
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3674863Z         )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3675062Z         ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3675259Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3675448Z     ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3676018Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3676639Z     return task.result()
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3676891Z            ~~~~~~~~~~~^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3677501Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_assertions.py", line 648, in to_have_text
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3678143Z     await self._expect_impl(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3678403Z     ...<9 lines>...
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3678616Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3679187Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_assertions.py", line 128, in _expect_impl
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3680303Z     _record_soft_or_raise(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3680586Z     ~~~~~~~~~~~~~~~~~~~~~^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3680835Z         AssertionError(
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3681084Z         ^^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3681305Z     ...<2 lines>...
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3681528Z         self._is_soft,
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3681749Z         ^^^^^^^^^^^^^^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3681969Z     )
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3682473Z     ^
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3683107Z   File "/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/site-packages/playwright/_impl/_assertions.py", line 60, in _record_soft_or_raise
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3683757Z     raise error
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3684078Z AssertionError: Locator expected to have text 'Your fine is $3.00'
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3684476Z Actual value: Your fine is $1.50 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3684749Z Call log:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3685050Z   - Expect "to_have_text" get_by_role("status") with timeout 5000ms
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3685433Z   - waiting for get_by_role("status")
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3686028Z     14 × locator resolved to <p role="status">Your fine is $1.50</p>
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3686457Z        - unexpected value "Your fine is $1.50"
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3686682Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3686784Z Aria snapshot:
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687011Z - status: Your fine is $1.50
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687181Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687337Z ----------------------------------------------------------------------
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687702Z Ran 1 test in 5.799s
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687841Z 
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3687941Z FAILED (failures=1)
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3889232Z  * Serving Flask app 'app'
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3890062Z  * Debug mode: off
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3891284Z [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3892403Z  * Running on http://127.0.0.1:5000
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3893015Z [33mPress CTRL+C to quit[0m
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3893600Z 127.0.0.1 - - [13/Oct/2026 02:14:51] "GET /health HTTP/1.1" 200 -
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3894291Z 127.0.0.1 - - [13/Oct/2026 02:14:52] "GET / HTTP/1.1" 200 -
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3895025Z 127.0.0.1 - - [13/Oct/2026 02:14:52] "GET /?days=5&deluxe=on HTTP/1.1" 200 -
+e2e	Run the artifact and test it through a browser	2026-10-13T02:14:57.3908477Z ##[error]Process completed with exit code 1.
